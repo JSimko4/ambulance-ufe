@@ -6,13 +6,12 @@ describe('cv1simko-ambulance-wl-list', () => {
     const page = await newSpecPage({
       components: [Cv1simkoAmbulanceWlList],
       html: `<cv1simko-ambulance-wl-list></cv1simko-ambulance-wl-list>`,
-    });
-    expect(page.root).toEqualHtml(`
-      <cv1simko-ambulance-wl-list>
-        <mock:shadow-root>
-          <slot></slot>
-        </mock:shadow-root>
-      </cv1simko-ambulance-wl-list>
-    `);
+  });
+
+  const wlList = page.rootInstance as Cv1simkoAmbulanceWlList;
+  const expectedPatients = wlList?.waitingPatients?.length
+
+  const items = page.root.shadowRoot.querySelectorAll("md-list-item");
+  expect(items.length).toEqual(expectedPatients);
   });
 });
