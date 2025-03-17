@@ -55,7 +55,9 @@ export class Cv1simkoAmbulanceWlApp {
       <Host>
         { element === "editor"
         ? <cv1simko-ambulance-wl-editor entry-id={entryId}
-            oneditor-closed={ () => navigate("./list")} >
+            oneditor-closed={ () => navigate("./list")}
+            ambulance-id={this.ambulanceId} api-base={this.apiBase}
+            >
           </cv1simko-ambulance-wl-editor>
         : <cv1simko-ambulance-wl-list  ambulance-id={this.ambulanceId} api-base={this.apiBase}
         onentry-clicked={ (ev: CustomEvent<string>)=> navigate("./entry/" + ev.detail) } >
