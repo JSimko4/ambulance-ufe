@@ -38,6 +38,7 @@ export class Cv1simkoAmbulanceWlApp {
 
   render() {
     console.debug("cv1simko-ambulance-wl-app.render() - path: %s", this.relativePath);
+    console.debug("SERUS");
 
     let element = "list"
     let entryId = "@new"
