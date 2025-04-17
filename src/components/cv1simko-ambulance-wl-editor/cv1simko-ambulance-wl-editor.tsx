@@ -125,33 +125,34 @@ private async getConditions(): Promise<Condition[]> {
 
     return (
       <Host>
-                <form ref={el => this.formElement = el}>
-        <md-filled-text-field label="Meno a Priezvisko"             required value={this.entry?.name}
+        <form ref={el => this.formElement = el}>
+          <md-filled-text-field label="Meno a Priezvisko"
+            required value={this.entry?.name}
             oninput={ (ev: InputEvent) => {
               if(this.entry) {this.entry.name = this.handleInputEvent(ev)}
             } }>
-          <md-icon slot="leading-icon">person</md-icon>
-        </md-filled-text-field>
+            <md-icon slot="leading-icon">person</md-icon>
+          </md-filled-text-field>
 
-        <md-filled-text-field label="Registračné číslo pacienta"             required value={this.entry?.name}
+          <md-filled-text-field label="Registračné číslo pacienta"
+            required value={this.entry?.patientId}
             oninput={ (ev: InputEvent) => {
-              if(this.entry) {this.entry.name = this.handleInputEvent(ev)}
+              if(this.entry) {this.entry.patientId = this.handleInputEvent(ev)}
             } }>
-          <md-icon slot="leading-icon">fingerprint</md-icon>
-        </md-filled-text-field>
+            <md-icon slot="leading-icon">fingerprint</md-icon>
+          </md-filled-text-field>
 
-        <md-filled-text-field label="Čakáte od" disabled
-                        value={new Date(this.entry?.waitingSince || Date.now()).toLocaleTimeString()}>
-          <md-icon slot="leading-icon">watch_later</md-icon>
-        </md-filled-text-field>
+          <md-filled-text-field label="Čakáte od" disabled
+            value={new Date(this.entry?.waitingSince || Date.now()).toLocaleTimeString()}>
+            <md-icon slot="leading-icon">watch_later</md-icon>
+          </md-filled-text-field>
+          <md-filled-text-field disabled
+              label="Predpokladaný čas vyšetrenia"
+              value={new Date(this.entry?.estimatedStart || Date.now()).toLocaleTimeString()}>
+              <md-icon slot="leading-icon">login</md-icon>
+          </md-filled-text-field>
 
-        <md-filled-text-field disabled
-                        label="Predpokladaný čas vyšetrenia"
-                        value={new Date(this.entry?.estimatedStart || Date.now()).toLocaleTimeString()}>
-                        <md-icon slot="leading-icon">login</md-icon>
-        </md-filled-text-field>
-
-        {this.renderConditions()}
+          {this.renderConditions()}
         </form>
 
         <div class="duration-slider">
